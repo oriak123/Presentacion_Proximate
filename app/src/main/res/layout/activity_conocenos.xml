@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:background="#c4dfe6"
+    android:backgroundTint="#003B46"
+    tools:context=".ui.utils.Conocenos">
+
+
+    <ImageView
+        android:id="@+id/nav_header_imageview"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/logonuevo" />
+
+    <TextView
+        android:id="@+id/nav_header_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/nav_header_imageview"
+        android:textStyle="bold"
+        android:text="App Legend"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#ece5dd"/>
+    <WebView
+        android:id="@+id/webview"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#c4dfe6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

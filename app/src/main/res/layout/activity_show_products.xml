@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c4dfe6">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Recycler"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/ivLoginFooter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/logonuevo"/>
+
+    <TextView
+        android:id="@+id/tvText1Footer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="60dp"
+        android:text="AppLegend 2.0"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/ivLoginFooter"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvText2Footer"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="45dp"
+        android:textColor="@color/black"
+        android:text="Líneas de atención 01-8000-12444 o al 313 333 3333"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/tvText1Footer"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvText3Footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="60dp"
+        android:textColor="@color/black"
+        android:text="2022"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/tvText2Footer"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

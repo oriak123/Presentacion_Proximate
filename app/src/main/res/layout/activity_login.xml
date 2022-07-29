@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#c4dfe6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.LoginActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivLoginLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logonuevo"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="2dp"
+        android:background="@drawable/button_border"
+        app:endIconMode="clear_text"
+        app:endIconTint="#003B46"
+        android:textColorHint="#003B46"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLoginLogo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsuario"
+            android:layout_margin="5dp"
+            android:backgroundTint="#c4dfe6"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text=""
+            tools:layout_editor_absoluteY="409dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="Usuario"
+            android:background="@drawable/button_border"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="#003B46"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="55dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="2dp"
+        android:textColorHint="#003B46"
+        app:endIconMode="password_toggle"
+        android:background="@drawable/button_border"
+        app:endIconTint="#003B46"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etContraseña"
+            android:layout_margin="5dp"
+            android:backgroundTint="#c4dfe6"
+            android:ems="10"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteY="364dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="Contraseña"
+            android:background="@drawable/button_border"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="#003B46"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordar Usuario"
+        android:textColor="#07575b"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="60dp"
+        android:buttonTint="#07575b"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_rounded"
+        android:text="Iniciar sesión"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox" />
+
+
+    <ImageView
+        android:id="@+id/ivLoginFooter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/logonuevo"/>
+
+    <TextView
+        android:id="@+id/tvText1Footer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="60dp"
+        android:text="AppLegend 2.0"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/ivLoginFooter"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvText2Footer"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="45dp"
+        android:textColor="@color/black"
+        android:text="Líneas de atención 01-8000-12444 o al 313 333 3333"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/tvText1Footer"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvText3Footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="60dp"
+        android:textColor="@color/black"
+        android:text="2022"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/tvText2Footer"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
