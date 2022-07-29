@@ -20,6 +20,7 @@ class Conocenos : AppCompatActivity() {
         webview.webChromeClient = object : WebChromeClient(){
 
         }
+
         webview.webViewClient = object : WebViewClient(){
 
         }

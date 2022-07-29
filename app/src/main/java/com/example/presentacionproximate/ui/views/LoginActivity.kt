@@ -19,23 +19,13 @@ private lateinit var binding: ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var etUsuario: EditText
-    private lateinit var etContraseña: EditText
-    private lateinit var progressbar: ProgressBar
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        etUsuario = findViewById(R.id.etUsuario)
-        etContraseña = findViewById(R.id.etContraseña)
-        progressbar = findViewById(R.id.progressBar)
-
         binding.btnLogin.setOnClickListener { iniciarSesion() }
-
 
         autocompletarUsuario()
         recordarUsuario()
@@ -59,9 +49,11 @@ class LoginActivity : AppCompatActivity() {
         val usuario = prefs.getUser()
         val contraseña = prefs.getPassw()
 
-        // Comprobando que usuario y contraseña no esten vacios para autocompletar los campos a la hora de cerrar sesion.
+        // Comprobando que usuario y contraseña no esten vacios para autocompletar los campos a la hora de iniciar sesion nuevamente.
+
         if (usuario.isNotEmpty() && contraseña.isNotEmpty()) {
 
+            //Colocando los strings correspondientes en el caso de que no este vacio.
             binding.etUsuario.setText(usuario)
             binding.etContraseA.setText(contraseña)
         }
@@ -70,42 +62,48 @@ class LoginActivity : AppCompatActivity() {
 
     fun iniciarSesion() {
 
-        progressbar.visibility = View.VISIBLE
+        //Llamando a la propiedad visibilidad de progressbar para colocarla visible.
+        binding.progressBar.visibility = View.VISIBLE
 
         // Convirtiendo datos ingresados a Strings.
-        val user: String = etUsuario.text.toString()
-        val password: String = etContraseña.text.toString()
+        val user: String = binding.etUsuario.text.toString()
+        val password: String = binding.etContraseA.text.toString()
 
-        // Si user y password no estan vacios
+
         if (user.isNotEmpty() && password.isNotEmpty()) {
 
+            //Llamando a la clase RestApiService y la guardo en la variable apiSerice
             val apiService = RestApiService()
+            // Se crea objeto de tipo UserInfo y se le pasa las variables user y password.
             val Usuario = UserInfo(
                 user = user,
                 password = password
             )
 
+            // Con la variable apiService se manda a traer el metodo getLogin al cual se le pasa como parametro el Usuario.
             apiService.getLogin(Usuario) { usuarioRespuesta ->
 
-                Log.d("usuresp", usuarioRespuesta.toString())
+                //Log.d("usuresp", usuarioRespuesta.toString())
 
+                // Si la respuesta del metodo getLogin no es nula y el status no es falso, entonces procede.
                 if (usuarioRespuesta != null && usuarioRespuesta.status != false) {
-
-
-
 
                    // Log.d("hola", binding.checkbox.isChecked.toString())
 
+                    // Guardando estados de las variables y strings.
                     prefs.saveRemember(binding.checkbox.isChecked)
                     prefs.saveUser(binding.etUsuario.text.toString())
                     prefs.savePassw(binding.etContraseA.text.toString())
 
-                    usuarioRespuesta!!.dataUser!!.name?.let { action2(it) }
-                    usuarioRespuesta!!.dataUser!!.userToken?.let { action(it) }
+                    // Con la respuesta del metodo getLogin se extrae el name y el userToken del objeto dataUser.
+                    usuarioRespuesta!!.dataUser!!.name?.let { prefs.saveGreeting(it)}
+                    usuarioRespuesta!!.dataUser!!.userToken?.let { prefs.saveToken(it) }
+                    action()
                    // Log.d("100", usuarioRespuesta.toString())
                 } else {
 
-                    progressbar.visibility = View.GONE
+                    //Si la respuesta del metodo getLogin  es nula y el status es falso, entonces procede.
+                    binding.progressBar.visibility = View.GONE
                     Toast.makeText(
                         this, "Por favor ingrese los datos correctos", Toast.LENGTH_SHORT
                     ).show()
@@ -113,6 +111,7 @@ class LoginActivity : AppCompatActivity() {
             }
         } else {
 
+            // Si user y password es vacio entonces procede.
             Toast.makeText(
                 this, "Por favor ingrese los datos correctos", Toast.LENGTH_SHORT
             ).show()
@@ -120,17 +119,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    private fun action(tokenUsuario: String) {
-
-        prefs.saveToken(tokenUsuario)
+    private fun action() {
         //Log.d("Otracosa", prefs.getToken())
+        // Se crea un Intent el cual inicializa la actividad Home y con finish se destruye la actividad Login.
         val intent = Intent(this, Home::class.java)
         startActivity(intent)
         finish()
-    }
-
-    private fun action2(saludo: String) {
-        prefs.saveGreeting(saludo)
-       // Log.d("OtroName", prefs.getGreeting())
     }
 }

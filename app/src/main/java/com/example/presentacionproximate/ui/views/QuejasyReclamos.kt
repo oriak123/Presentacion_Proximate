@@ -16,9 +16,10 @@ class QuejasyReclamos : AppCompatActivity() {
         binding = ActivityQuejasyReclamosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        binding.volverinicio.setOnClickListener { volverinicio() }
     }
-    fun volverinicio(view: View) {
+
+    fun volverinicio() {
         val intent2 = Intent(this, Home::class.java)
         startActivity(intent2)
     }

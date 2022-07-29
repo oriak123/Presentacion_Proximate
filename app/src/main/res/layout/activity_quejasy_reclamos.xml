@@ -60,7 +60,7 @@
 
     <Button
 
-        android:onClick="volverinicio"
+        android:id="@+id/volverinicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"

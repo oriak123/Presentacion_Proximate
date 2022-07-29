@@ -8,14 +8,13 @@ import retrofit2.http.POST
 
 interface  RestApi {
 
-    @Headers("Content-Type: application/json") // Para el cliente
+    @Headers("Content-Type: application/json") // Cabecera porque el api lo requiere.
     @POST("/proximatetools/dev/webadmin/testproximate/login")
-    fun getLogin(@Body userData: UserInfo): Call<LoginModel>// la fun deberia llamarse getLogin
-    // Body es porque asi lo requier el endpoint, nombre "userData" como nombre de la clase "UserInfo" en esa clase iria lo que requiere el endpoint que es el user y la clave
-    // devuelve una llamada "call" de tipo UserResponse , eso se creo anteriormente donde recibimos los end point
+    // El endpoint que el api necesita para obtener el usuario, el cual recibe como parametro un objeto de tipo UserInfor que retrofit requiere como un body.
+    fun getLogin(@Body userData: UserInfo): Call<LoginModel>
 
 
-    @Headers("Content-Type: application/json") // para el cliente
+    @Headers("Content-Type: application/json")
     @POST("proximatetools/dev/webadmin/testproximate/getproducts")
-    fun getProducts (@Body userData: TokenGener): Call<ProductsModel> // Lo mismo que arriba
+    fun getProducts (@Body userData: TokenGener): Call<ProductsModel>
 }

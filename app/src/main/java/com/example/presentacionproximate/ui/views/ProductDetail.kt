@@ -1,12 +1,9 @@
 package com.example.presentacionproximate.ui.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.example.presentacionproximate.R
 import com.example.presentacionproximate.databinding.ActivityProductDetailBinding
-import kotlinx.android.synthetic.main.activity_product_detail.*
 
 class ProductDetail : AppCompatActivity() {
 
@@ -20,19 +17,20 @@ class ProductDetail : AppCompatActivity() {
 
 
         if (intent.extras != null) {
-            Glide.with(this).load(intent.getStringExtra("imageUrl")).into(fotoAmpliada)
-        }
 
-        if (intent.extras != null) {
-            val descrip: Intent = intent
-            var mostrarDescr = descrip.getStringExtra("descripUrl")
-            descriptionAmpliada.text = "$mostrarDescr"
-        }
+            Glide.with(this).load(intent.getStringExtra("imageUrl")).into(binding.fotoAmpliada)
 
-        if (intent.extras != null) {
-            val titu: Intent = intent
-            var mostrartitu = titu.getStringExtra("titulo")
-            tituloxml.text = "$mostrartitu"
+            var showDescription = intent.getStringExtra("descripUrl")
+
+            if (showDescription != null && showDescription.isNotEmpty()) {
+                    binding.descriptionAmpliada.text = "$showDescription"
+            }
+
+            var showTitle = intent.getStringExtra("titulo")
+
+            if (showTitle != null && showTitle.isNotEmpty()) {
+                    binding.tituloxml.text = "$showTitle"
+            }
         }
     }
 }

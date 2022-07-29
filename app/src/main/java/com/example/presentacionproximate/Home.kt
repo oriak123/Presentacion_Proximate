@@ -31,11 +31,12 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
         binding =ActivityDrawerLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
-        toolbar_main.setTitle("")
+        val toolbar = binding.included.toolbarMain
+        toolbar.setTitle("")
+
         setSupportActionBar(toolbar)
 
-        drawer = findViewById(R.id.drawer_layout)
+        drawer = binding.drawerLayout
 
         toggle = ActionBarDrawerToggle(
             this,
