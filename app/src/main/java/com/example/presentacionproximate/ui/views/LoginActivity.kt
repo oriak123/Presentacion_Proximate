@@ -2,22 +2,20 @@ package com.example.presentacionproximate.ui.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.presentacionproximate.Home
-import com.example.presentacionproximate.R
 import com.example.presentacionproximate.databinding.ActivityLoginBinding
 import com.example.presentacionproximate.data.RestApiService
 import com.example.presentacionproximate.domain.model.UserInfo
 import com.example.presentacionproximate.ui.utils.GlobalDatesApplication.Companion.prefs
 
-private lateinit var binding: ActivityLoginBinding
+
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -75,13 +73,13 @@ class LoginActivity : AppCompatActivity() {
             //Llamando a la clase RestApiService y la guardo en la variable apiSerice
             val apiService = RestApiService()
             // Se crea objeto de tipo UserInfo y se le pasa las variables user y password.
-            val Usuario = UserInfo(
+            val usuario = UserInfo(
                 user = user,
                 password = password
             )
 
             // Con la variable apiService se manda a traer el metodo getLogin al cual se le pasa como parametro el Usuario.
-            apiService.getLogin(Usuario) { usuarioRespuesta ->
+            apiService.getLogin(usuario) { usuarioRespuesta ->
 
                 //Log.d("usuresp", usuarioRespuesta.toString())
 
@@ -109,13 +107,13 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
             }
-        } else {
-
-            // Si user y password es vacio entonces procede.
-            Toast.makeText(
-                this, "Por favor ingrese los datos correctos", Toast.LENGTH_SHORT
-            ).show()
-        }
+        } else if (user.isNotEmpty() || password.isNotEmpty()) {
+                // Si user o password es vacio entonces procede.
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(
+                    this, "Por favor ingrese los datos correctos", Toast.LENGTH_SHORT
+                ).show()
+            }
     }
 
 

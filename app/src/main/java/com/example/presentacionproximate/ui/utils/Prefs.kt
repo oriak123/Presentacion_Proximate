@@ -2,7 +2,7 @@ package com.example.presentacionproximate.ui.utils
 
 import android.content.Context
 
-class Prefs(val context:Context) {
+class Prefs (val context:Context) {
 
     val SHARED_NAME = "Datos guardados"
     val SHARED_TOKEN_NAME = "token"
@@ -11,6 +11,7 @@ class Prefs(val context:Context) {
     val USER ="NombreUsuario"
     val GUARDADO = "UsuarioCheckbox"
 
+    // Base de datos
     val storage = context.getSharedPreferences(SHARED_NAME,0)
 
     fun saveGreeting(saludo:String){
